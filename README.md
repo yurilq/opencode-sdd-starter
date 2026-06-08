@@ -13,16 +13,39 @@
 ### 🎯 Comece em 3 passos
 
 ```bash
-# 1. Clone ou use template no GitHub
-git clone https://github.com/yurilq/opencode-sdd-starter.git meu-projeto
-cd meu-projeto
+# 1. Clone o template em uma pasta temporária
+git clone https://github.com/yurilq/opencode-sdd-starter.git opencode-template
 
-# 2. Execute o setup (automático)
-./scripts/setup-workspace.ps1  # Windows PowerShell
-./scripts/setup-workspace.sh   # macOS/Linux
+# 2. Execute o setup a partir do SEU PROJETO
+# O script copiará .opencode/, openspec/ e configurações para seu projeto
+./opencode-template/scripts/setup-workspace.ps1  # Windows PowerShell
+./opencode-template/scripts/setup-workspace.sh   # macOS/Linux
 
 # 3. Inicie OpenCode
 opencode
+```
+
+### ℹ️ Como funciona
+
+O template é **instalado em seu projeto existente**, não o contrário:
+
+```
+seu-projeto/                    (seu projeto atual)
+├── seu-codigo/
+├── .env
+└── opencode-template/          (clone do template - será removido)
+    └── scripts/
+        └── setup-workspace.ps1
+
+Após executar setup:
+
+seu-projeto/
+├── seu-codigo/
+├── .env
+├── .opencode/                  (copiado do template)
+├── openspec/                   (copiado do template)
+├── package.json                (atualizado com opencode-ai)
+└── node_modules/               (opencode-ai instalado)
 ```
 
 ### ✨ O que você ganha
@@ -85,16 +108,39 @@ meu-projeto/
 ### 🎯 Get started in 3 steps
 
 ```bash
-# 1. Clone or use template on GitHub
-git clone https://github.com/yurilq/opencode-sdd-starter.git my-project
-cd my-project
+# 1. Clone the template in a temporary folder
+git clone https://github.com/yurilq/opencode-sdd-starter.git opencode-template
 
-# 2. Run setup (automatic)
-./scripts/setup-workspace.ps1  # Windows PowerShell
-./scripts/setup-workspace.sh   # macOS/Linux
+# 2. Run setup FROM YOUR PROJECT
+# The script will copy .opencode/, openspec/ and configs to your project
+./opencode-template/scripts/setup-workspace.ps1  # Windows PowerShell
+./opencode-template/scripts/setup-workspace.sh   # macOS/Linux
 
 # 3. Start OpenCode
 opencode
+```
+
+### ℹ️ How it works
+
+The template is **installed into your existing project**, not the other way around:
+
+```
+your-project/                   (your current project)
+├── your-code/
+├── .env
+└── opencode-template/          (template clone - will be removed)
+    └── scripts/
+        └── setup-workspace.ps1
+
+After running setup:
+
+your-project/
+├── your-code/
+├── .env
+├── .opencode/                  (copied from template)
+├── openspec/                   (copied from template)
+├── package.json                (updated with opencode-ai)
+└── node_modules/               (opencode-ai installed)
 ```
 
 ### ✨ What you get

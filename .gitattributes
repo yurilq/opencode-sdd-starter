@@ -1,0 +1,35 @@
+# Auto detect text files and normalize line endings to LF
+* text=auto
+
+# Markdown
+*.md text eol=lf
+
+# JSON
+*.json text eol=lf
+
+# YAML
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# Scripts
+*.ps1 text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Ignore files from being included in Git archives
+.gitattributes export-ignore
+.gitignore export-ignore
+CHANGELOG.md export-ignore
+CONTRIBUTING.md export-ignore
+
+# Mark scripts as executable
+scripts/*.sh linguist-language=Shell
+scripts/*.ps1 linguist-language=PowerShell
+
+# Documentation
+docs/ linguist-documentation
+*.md linguist-documentation
+README* linguist-documentation
+QUICKSTART* linguist-documentation
+STRUCTURE* linguist-documentation
+TROUBLESHOOTING* linguist-documentation

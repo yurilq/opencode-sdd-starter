@@ -1,0 +1,20 @@
+{
+  "name": "my-openspec-project",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido com OpenCode + OpenSpec",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Configure your dev script'",
+    "build": "echo 'Configure your build script'",
+    "test": "echo 'Configure your test script'",
+    "opencode": "opencode"
+  },
+  "keywords": [
+    "opencode",
+    "openspec",
+    "spec-driven-development"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {}
+}

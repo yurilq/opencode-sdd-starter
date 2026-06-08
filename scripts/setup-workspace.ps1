@@ -8,13 +8,18 @@
     Este script:
     1. Valida pré-requisitos (Node.js, npm)
     2. Valida estrutura do template
-    3. Copia .opencode/ e openspec/ para o projeto
-    4. Instala OpenCode
-    5. Remove a pasta scripts/
-    6. Inicializa git (opcional)
+    3. Copia .opencode/ e openspec/ para o PROJETO PARENT (nível acima)
+    4. Instala OpenCode no projeto parent
+    5. Remove o template e a pasta scripts/
+    6. Inicializa git no projeto parent (opcional)
 
 .EXAMPLE
-    .\setup-workspace.ps1
+    cd seu-projeto
+    path/to/template/scripts/setup-workspace.ps1
+
+.NOTES
+    O script deve ser executado DE DENTRO de seu projeto.
+    Ele copiará os arquivos para o diretório pai (onde o template foi clonado).
 #>
 
 param(
@@ -94,11 +99,17 @@ $templateDir = Join-Path $scriptDir "..\template"
 Write-Success "Estrutura de template válida"
 
 # ============================================
-# 3. Copiar .opencode/ e openspec/
+# 3. Copiar .opencode/ e openspec/ para PROJECT PARENT
 # ============================================
-Write-Info "Copiando configuração..."
+Write-Info "Copiando configuração para projeto parent..."
 
-$projectDir = Get-Location
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$templateDir = Join-Path $scriptDir "..\template"
+$projectDir = Split-Path -Parent (Split-Path -Parent $scriptDir)  # Sobe 2 níveis
+
+Write-Info "Template em: $templateDir"
+Write-Info "Projeto em: $projectDir"
+
 $opencodeSrc = Join-Path $templateDir ".opencode"
 $opencodeDst = Join-Path $projectDir ".opencode"
 
@@ -120,9 +131,9 @@ if (Test-Path $openspecDst) {
 }
 
 # ============================================
-# 4. Instalar/atualizar package.json
+# 4. Instalar/atualizar package.json no projeto parent
 # ============================================
-Write-Info "Configurando package.json..."
+Write-Info "Configurando package.json no projeto parent..."
 
 $packageJsonPath = Join-Path $projectDir "package.json"
 if (-not (Test-Path $packageJsonPath)) {
@@ -130,39 +141,46 @@ if (-not (Test-Path $packageJsonPath)) {
     Copy-Item (Join-Path $templateDir "package.json") $packageJsonPath -Force
 }
 
-# Instalar dependências
-Write-Info "Instalando OpenCode..."
+# Instalar dependências no projeto parent
+Write-Info "Instalando OpenCode no projeto parent..."
+Push-Location $projectDir
 npm install opencode-ai --save-dev 2>$null
-if ($LASTEXITCODE -eq 0) {
+$installSuccess = $LASTEXITCODE -eq 0
+Pop-Location
+
+if ($installSuccess) {
     Write-Success "OpenCode instalado com sucesso"
 } else {
     Write-Warning "Não foi possível instalar OpenCode. Execute: npm install opencode-ai --save-dev"
 }
 
 # ============================================
-# 5. Remover pasta scripts/
+# 5. Remover pasta do template
 # ============================================
-Write-Info "Limpando estrutura..."
-$scriptsPath = Join-Path $scriptDir ".."
-if (Test-Path $scriptsPath\scripts) {
-    Remove-Item $scriptsPath\scripts -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Success "Pasta scripts/ removida"
+Write-Info "Limpando template..."
+$templatePath = Split-Path -Parent (Split-Path -Parent $scriptDir)
+if (Test-Path $templatePath) {
+    Remove-Item $templatePath -Recurse -Force -ErrorAction SilentlyContinue
+    Write-Success "Template removido"
 }
 
 # ============================================
-# 6. Inicializar git (opcional)
+# 6. Inicializar git no projeto parent (opcional)
 # ============================================
 if (-not $NoGit) {
-    if (-not (Test-Path ".git")) {
-        Write-Info "Inicializando repositório Git..."
+    $gitPath = Join-Path $projectDir ".git"
+    if (-not (Test-Path $gitPath)) {
+        Write-Info "Inicializando repositório Git no projeto parent..."
+        Push-Location $projectDir
         git init 2>$null
         git add . 2>$null
-        git commit -m "chore: Initial commit from opencode-sdd-starter template" 2>$null
+        git commit -m "chore: Initial commit with OpenCode + OpenSpec infrastructure" 2>$null
         if ($LASTEXITCODE -eq 0) {
             Write-Success "Git inicializado e primeiro commit realizado"
         } else {
             Write-Warning "Git não está configurado ou não possui commits iniciais"
         }
+        Pop-Location
     }
 }
 

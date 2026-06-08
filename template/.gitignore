@@ -7,6 +7,7 @@ pnpm-lock.yaml
 # OpenCode
 .opencode/node_modules/
 .opencode/package-lock.json
+.opencode/cache/
 
 # OpenSpec
 openspec/changes/archive/*
@@ -40,3 +41,35 @@ logs/
 tmp/
 temp/
 *.tmp
+
+# Cache directories
+.cache/
+.ruff_cache/
+.pytest_cache/
+.next/
+.nuxt/
+coverage/
+
+# Local/Development
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Misc project-specific (as seen in your screenshot)
+.ruff_cache/
+analyse de erro airflow
+analyzes
+cogna_data_lake
+datax-gcc
+Migracao_Kiro
+old/

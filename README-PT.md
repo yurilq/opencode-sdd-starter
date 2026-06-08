@@ -7,7 +7,7 @@ Template profissional para iniciar projetos com **OpenCode** + **OpenSpec**.
 ## 🎯 O que é isso?
 
 Repositório template com:
-- ✅ **29 Agents Especializados** - IA para cada função
+- ✅ **24 Agents Especializados** - IA para cada função
 - ✅ **45+ Skills** - Conhecimento em múltiplos domínios
 - ✅ **13 Workflows** - Automações prontas
 - ✅ **OpenSpec Configurado** - Pronto para Spec-Driven Development
@@ -72,7 +72,7 @@ O script `setup-workspace.ps1` ou `setup-workspace.sh`:
 
 ## 📊 O que você ganha
 
-### 29 Agents Especializados
+### 24 Agents Especializados
 
 Cada um com expertise própria:
 
@@ -88,8 +88,7 @@ Cada um com expertise própria:
 | **Debugging** | debugger, code-archaeologist |
 | **Performance** | performance-optimizer |
 | **Game Dev** | game-developer |
-| **Odoo** | odoo-developer, odoo-concierge, etc |
-| **E muito mais...** | 13 agents adicionais |
+| **E muito mais...** | 8 agents adicionais |
 
 ### 45+ Skills Estruturados
 
@@ -155,7 +154,7 @@ Após setup, seu projeto tem:
 meu-novo-projeto/
 │
 ├── .opencode/                      # Configuração OpenCode
-│   ├── agents/ (29 arquivos)       # Agents especializados
+│   ├── agents/ (24 arquivos)       # Agents especializados
 │   ├── skills/                     # OpenSpec skills
 │   │   ├── openspec-propose/
 │   │   ├── openspec-apply-change/

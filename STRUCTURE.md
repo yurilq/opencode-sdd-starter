@@ -11,7 +11,7 @@ opencode-sdd-starter/
 │
 ├── 📁 template/                            ← Copiado para novo projeto
 │   ├── .opencode/
-│   │   ├── agents/                         (29 agents especializados)
+│   │   ├── agents/                         (24 agents especializados)
 │   │   ├── skills/                         (5 OpenSpec skills)
 │   │   ├── workflows/                      (13 slash commands)
 │   │   ├── rules/                          (Regras customizadas)
@@ -57,7 +57,7 @@ opencode-sdd-starter/
 
 **Copiada para novo projeto.**
 
-#### `agents/` (29 agents)
+#### `agents/` (24 agents)
 
 Agents especializados em diferentes domínios:
 
@@ -81,8 +81,7 @@ agents/
 ├── code-archaeologist.md           (Legacy code, refactor)
 ├── documentation-writer.md         (Docs)
 ├── explorer-agent.md               (Análise codebase)
-├── odoo-developer.md               (Odoo specialist)
-├── (10 agents adicionais)
+├── (5 agents adicionais)
 └── ...
 ```
 
@@ -296,7 +295,7 @@ Resultado: Projeto pronto com configuração completa!
 
 Deixa claro o que será copiado vs. scripts de setup.
 
-### `.opencode/agents/` (29 files)
+### `.opencode/agents/` (24 files)
 
 Cada agent em seu próprio arquivo para fácil edição.
 
@@ -368,7 +367,7 @@ Use como template os exemplos inclusos.
 
 | Item | Quantidade |
 |------|-----------|
-| Agents | 29 |
+| Agents | 24 |
 | OpenSpec Skills | 5 |
 | Total Skills | 45+ |
 | Workflows | 13 |
